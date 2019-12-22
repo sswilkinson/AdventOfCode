@@ -2,7 +2,7 @@
 
 #include <vector>
 
-class FCU
+class FuelCounterUpper
 {
 public:
 	static unsigned int CalculateRequiredFuelForMass(const unsigned int mass);
