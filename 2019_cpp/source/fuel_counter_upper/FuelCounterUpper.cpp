@@ -2,5 +2,5 @@
 
 unsigned int FCU::CalculateRequiredFuelForMass(unsigned int mass)
 {
-	return 0;
+	return (mass / 3) - 2;
 }
