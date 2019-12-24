@@ -1,6 +1,11 @@
+#include <algorithm>
+
 #include "fuel_counter_upper/FuelCounterUpper.h"
+#include "intcode_computer/IntcodeComputer.h"
 
 #include "input/Day1.h"
+#include "input/Day2.h"
+
 
 int main()
 {
@@ -15,6 +20,27 @@ int main()
 	if (FuelCounterUpper::CalculateTotalRequiredFuelForMass(1969) != 966)             return 1;
 	if (FuelCounterUpper::CalculateTotalRequiredFuelForMass(100756) != 50346)         return 1;
 	if (FuelCounterUpper::CalculateTotalRequiredFuelForMass(Day1::input) != 4995942)  return 1;  // Part 2 answer
+
+	// Day 2
+	auto vector1 = IntcodeComputer::Process( { 1,9,10,3,2,3,11,0,99,30,40,50 } );
+	auto vector2 = std::vector<int>{ 3500,9,10,70,2,3,11,0,99,30,40,50 };
+	if (!std::equal(vector1.begin(), vector1.end(), vector2.begin(), vector2.end()))  return 2;
+
+	vector1 = IntcodeComputer::Process({ 1,0,0,0,99 });
+	vector2 = std::vector<int>{ 2,0,0,0,99 };
+	if (!std::equal(vector1.begin(), vector1.end(), vector2.begin(), vector2.end()))  return 3;
+
+	vector1 = IntcodeComputer::Process({ 2,3,0,3,99 });
+	vector2 = std::vector<int>{ 2,3,0,6,99 };
+	if (!std::equal(vector1.begin(), vector1.end(), vector2.begin(), vector2.end()))  return 4;
+
+	vector1 = IntcodeComputer::Process({ 2,4,4,5,99,0 });
+	vector2 = std::vector<int>{ 2,4,4,5,99,9801 };
+	if (!std::equal(vector1.begin(), vector1.end(), vector2.begin(), vector2.end()))  return 5;
+
+	vector1 = IntcodeComputer::Process({ 1,1,1,4,99,5,6,0,99 });
+	vector2 = std::vector<int>{ 30,1,1,4,2,5,6,0,99 };
+	if (!std::equal(vector1.begin(), vector1.end(), vector2.begin(), vector2.end()))  return 6;
 
 	return 0;
 }
