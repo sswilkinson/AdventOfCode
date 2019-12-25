@@ -72,9 +72,9 @@ bool IntcodeComputer::Add(std::vector<int>& memory, unsigned int startAddress)
 		return false;
 	}
 
-	const int input1 = memory[inputAddress1];
-	const int input2 = memory[inputAddress2];
-	memory[outputAddress] = input1 + input2;
+	const int parameter1 = memory[inputAddress1];
+	const int parameter2 = memory[inputAddress2];
+	memory[outputAddress] = parameter1 + parameter2;
 
 	return true;
 }
@@ -91,9 +91,9 @@ bool IntcodeComputer::Multiply(std::vector<int>& memory, unsigned int startAddre
 		return false;
 	}
 
-	const int input1 = memory[inputAddress1];
-	const int input2 = memory[inputAddress2];
-	memory[outputAddress] = input1 * input2;
+	const int parameter1 = memory[inputAddress1];
+	const int parameter2 = memory[inputAddress2];
+	memory[outputAddress] = parameter1 * parameter2;
 
 	return true;
 }
