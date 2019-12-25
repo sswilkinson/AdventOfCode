@@ -31,26 +31,26 @@ int main()
 	if (!VectorsAreEqual(vector1, vector2))  return 2;
 
 	vector1 = IntcodeComputer::Process({ 1,0,0,0,99 });
-	vector2 = std::vector<int>{ 2,0,0,0,99 };
+	vector2 = { 2,0,0,0,99 };
 	if (!VectorsAreEqual(vector1, vector2))  return 2;
 
 	vector1 = IntcodeComputer::Process({ 2,3,0,3,99 });
-	vector2 = std::vector<int>{ 2,3,0,6,99 };
+	vector2 = { 2,3,0,6,99 };
 	if (!VectorsAreEqual(vector1, vector2))  return 2;
 
 	vector1 = IntcodeComputer::Process({ 2,4,4,5,99,0 });
-	vector2 = std::vector<int>{ 2,4,4,5,99,9801 };
+	vector2 = { 2,4,4,5,99,9801 };
 	if (!VectorsAreEqual(vector1, vector2))  return 2;
 
 	vector1 = IntcodeComputer::Process({ 1,1,1,4,99,5,6,0,99 });
-	vector2 = std::vector<int>{ 30,1,1,4,2,5,6,0,99 };
+	vector2 = { 30,1,1,4,2,5,6,0,99 };
 	if (!VectorsAreEqual(vector1, vector2))  return 2;
 
 	vector1 = Day2::input;
 	vector1[1] = 12;  // Changes prompted by the puzzle's instructions
 	vector1[2] = 2;
 	vector1 = IntcodeComputer::Process(vector1);
-	vector2 = std::vector<int>{ 3267740,12,2,2,1,1,2,3,1,3,4,3,1,5,0,3,2,1,10,48,1,19,5,49,1,6,23,51,1,27,5,52,2,
+	vector2 = { 3267740,12,2,2,1,1,2,3,1,3,4,3,1,5,0,3,2,1,10,48,1,19,5,49,1,6,23,51,1,27,5,52,2,
 		31,10,208,2,35,6,416,1,39,5,417,2,43,9,1251,1,47,6,1253,1,13,51,1258,2,9,55,3774,
 		1,59,13,3779,1,6,63,3781,2,67,10,15124,1,9,71,15127,2,75,6,30254,1,79,5,30255,
 		1,83,5,30256,2,9,87,90768,2,9,91,272304,1,95,10,272308,1,9,99,272311,2,103,6,
