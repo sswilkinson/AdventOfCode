@@ -59,6 +59,22 @@ int main()
 	};  // Part 1 solution (vector2[0])
 	if (!VectorsAreEqual(processedMemory, expectedMemory))  return 2;
 
+	//for (auto noun = 0; noun < 100; ++noun)
+	//{
+	//	for (auto verb = 0; verb < 100; ++verb)
+	//	{
+	//		processedMemory = Day2::input;
+	//		processedMemory[1] = noun;
+	//		processedMemory[2] = verb;
+	//		processedMemory = IntcodeComputer::Process(processedMemory);
+
+	//		if (processedMemory[0] == 19690720)
+	//		{
+	//			return 100 * noun + verb;  // Part 2 solution
+	//		}
+	//	}
+	//}
+
 	return 0;
 }
 
