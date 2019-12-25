@@ -17,9 +17,9 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 
 	do
 	{
-		const int instruction = outputMemory[currentAddress];
+		const int opcode = outputMemory[currentAddress];
 
-		if (instruction == Instructions::STOP)
+		if (opcode == Instructions::STOP)
 		{
 			reachedStopInstruction = true;
 			break;
@@ -30,17 +30,17 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 			return FAILED_OUTPUT_MEMORY;  // Not enough input to perform the below instructions
 		}
 
-		if (instruction == Instructions::ADD)
+		if (opcode == Instructions::ADD)
 		{
 			failedInstruction = !Add(outputMemory, currentAddress + 1);
 		}
-		else if (instruction == Instructions::MULTIPLY)
+		else if (opcode == Instructions::MULTIPLY)
 		{
 			failedInstruction = !Multiply(outputMemory, currentAddress + 1);
 		}
 		else
 		{
-			return FAILED_OUTPUT_MEMORY;  // Bad instruction
+			return FAILED_OUTPUT_MEMORY;  // Bad opcode
 		}
 
 		if (failedInstruction)
