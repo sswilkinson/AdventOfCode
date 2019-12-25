@@ -14,6 +14,6 @@ public:
 
 private:
 
-	static bool Add(std::vector<int>& memory, unsigned int index);
-	static bool Multiply(std::vector<int>& memory, unsigned int index);
+	static bool Add(std::vector<int>& memory, unsigned int startAddress);
+	static bool Multiply(std::vector<int>& memory, unsigned int startAddress);
 };

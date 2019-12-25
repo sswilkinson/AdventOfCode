@@ -10,14 +10,14 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 	}
 
 	auto outputMemory = inputMemory;
-	int currentIndex = 0;
-	const int numberOfElements = outputMemory.size();
+	int currentAddress = 0;
+	const int memorySize = outputMemory.size();
 	bool reachedStopInstruction = false;
 	bool failedInstruction = false;
 
 	do
 	{
-		const int instruction = outputMemory[currentIndex];
+		const int instruction = outputMemory[currentAddress];
 
 		if (instruction == Instructions::STOP)
 		{
@@ -25,18 +25,18 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 			break;
 		}
 
-		if (currentIndex + 3 >= numberOfElements)
+		if (currentAddress + 3 >= memorySize)
 		{
 			return FAILED_OUTPUT_MEMORY;  // Not enough input to perform the below instructions
 		}
 
 		if (instruction == Instructions::ADD)
 		{
-			failedInstruction = !Add(outputMemory, currentIndex + 1);
+			failedInstruction = !Add(outputMemory, currentAddress + 1);
 		}
 		else if (instruction == Instructions::MULTIPLY)
 		{
-			failedInstruction = !Multiply(outputMemory, currentIndex + 1);
+			failedInstruction = !Multiply(outputMemory, currentAddress + 1);
 		}
 		else
 		{
@@ -48,9 +48,9 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 			return FAILED_OUTPUT_MEMORY;
 		}
 
-		currentIndex += 4;
+		currentAddress += 4;
 
-	} while (currentIndex < numberOfElements);
+	} while (currentAddress < memorySize);
 
 	if (!reachedStopInstruction)
 	{
@@ -60,40 +60,40 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 	return outputMemory;
 }
 
-bool IntcodeComputer::Add(std::vector<int>& memory, unsigned int index)
+bool IntcodeComputer::Add(std::vector<int>& memory, unsigned int startAddress)
 {
-	const int inputIndex1 = memory[index];
-	const int inputIndex2 = memory[index + 1];
-	const int outputIndex = memory[index + 2];
+	const int inputAddress1 = memory[startAddress];
+	const int inputAddress2 = memory[startAddress + 1];
+	const int outputAddress = memory[startAddress + 2];
 	const int numberOfElements = memory.size();
 
-	if (inputIndex1 >= numberOfElements || inputIndex2 >= numberOfElements || outputIndex >= numberOfElements)
+	if (inputAddress1 >= numberOfElements || inputAddress2 >= numberOfElements || outputAddress >= numberOfElements)
 	{
 		return false;
 	}
 
-	const int input1 = memory[inputIndex1];
-	const int input2 = memory[inputIndex2];
-	memory[outputIndex] = input1 + input2;
+	const int input1 = memory[inputAddress1];
+	const int input2 = memory[inputAddress2];
+	memory[outputAddress] = input1 + input2;
 
 	return true;
 }
 
-bool IntcodeComputer::Multiply(std::vector<int>& memory, unsigned int index)
+bool IntcodeComputer::Multiply(std::vector<int>& memory, unsigned int startAddress)
 {
-	const int inputIndex1 = memory[index];
-	const int inputIndex2 = memory[index + 1];
-	const int outputIndex = memory[index + 2];
+	const int inputAddress1 = memory[startAddress];
+	const int inputAddress2 = memory[startAddress + 1];
+	const int outputAddress = memory[startAddress + 2];
 	const int numberOfElements = memory.size();
 
-	if (inputIndex1 >= numberOfElements || inputIndex2 >= numberOfElements || outputIndex >= numberOfElements)
+	if (inputAddress1 >= numberOfElements || inputAddress2 >= numberOfElements || outputAddress >= numberOfElements)
 	{
 		return false;
 	}
 
-	const int input1 = memory[inputIndex1];
-	const int input2 = memory[inputIndex2];
-	memory[outputIndex] = input1 * input2;
+	const int input1 = memory[inputAddress1];
+	const int input2 = memory[inputAddress2];
+	memory[outputAddress] = input1 * input2;
 
 	return true;
 }
