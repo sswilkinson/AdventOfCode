@@ -11,7 +11,7 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& input)
 
 	auto output = input;
 	int currentIndex = 0;
-	int numberOfElements = output.size();
+	const int numberOfElements = output.size();
 	bool reachedStopInstruction = false;
 	bool failedInstruction = false;
 
@@ -62,10 +62,38 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& input)
 
 bool IntcodeComputer::Add(std::vector<int>& vector, unsigned int index)
 {
-	return false;
+	const int inputIndex1 = vector[index];
+	const int inputIndex2 = vector[index + 1];
+	const int outputIndex = vector[index + 2];
+	const int numberOfElements = vector.size();
+
+	if (inputIndex1 >= numberOfElements || inputIndex2 >= numberOfElements || outputIndex >= numberOfElements)
+	{
+		return false;
+	}
+
+	const int input1 = vector[inputIndex1];
+	const int input2 = vector[inputIndex2];
+	vector[outputIndex] = input1 + input2;
+
+	return true;
 }
 
 bool IntcodeComputer::Multiply(std::vector<int>& vector, unsigned int index)
 {
-	return false;
+	const int inputIndex1 = vector[index];
+	const int inputIndex2 = vector[index + 1];
+	const int outputIndex = vector[index + 2];
+	const int numberOfElements = vector.size();
+
+	if (inputIndex1 >= numberOfElements || inputIndex2 >= numberOfElements || outputIndex >= numberOfElements)
+	{
+		return false;
+	}
+
+	const int input1 = vector[inputIndex1];
+	const int input2 = vector[inputIndex2];
+	vector[outputIndex] = input1 * input2;
+
+	return true;
 }

@@ -14,6 +14,6 @@ public:
 
 private:
 
-	static void Add(std::vector<int>& vector, unsigned int index);
-	static void Multiply(std::vector<int>& vector, unsigned int index);
+	static bool Add(std::vector<int>& vector, unsigned int index);
+	static bool Multiply(std::vector<int>& vector, unsigned int index);
 };
