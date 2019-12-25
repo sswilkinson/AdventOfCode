@@ -10,7 +10,7 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 	}
 
 	auto outputMemory = inputMemory;
-	int currentAddress = 0;
+	int currentAddress = 0;  // AKA "instruction pointer"
 	const int memorySize = outputMemory.size();
 	bool reachedStopInstruction = false;
 	bool failedInstruction = false;
@@ -48,7 +48,7 @@ std::vector<int> IntcodeComputer::Process(const std::vector<int>& inputMemory)
 			return FAILED_OUTPUT_MEMORY;
 		}
 
-		currentAddress += 4;
+		currentAddress += 4;  // Increase by the number of values in the instruction
 
 	} while (currentAddress < memorySize);
 
