@@ -7,13 +7,13 @@ class IntcodeComputer
 public:
 
 	enum Instructions { ADD = 1, MULTIPLY = 2, STOP = 99 };
-	static std::vector<int> FAILED_OUTPUT;
+	static std::vector<int> FAILED_OUTPUT_MEMORY;
 
-	static std::vector<int> Process(const std::vector<int>& input);
+	static std::vector<int> Process(const std::vector<int>& inputMemory);
 
 
 private:
 
-	static bool Add(std::vector<int>& vector, unsigned int index);
-	static bool Multiply(std::vector<int>& vector, unsigned int index);
+	static bool Add(std::vector<int>& memory, unsigned int index);
+	static bool Multiply(std::vector<int>& memory, unsigned int index);
 };
