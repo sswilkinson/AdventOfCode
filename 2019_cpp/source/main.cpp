@@ -70,7 +70,7 @@ int main()
 
 	//		if (processedMemory[0] == 19690720)
 	//		{
-	//			return 100 * noun + verb;  // Part 2 solution
+	//			return 100 * noun + verb;  // Part 2 solution (78 * 100 + 70 = 7870)
 	//		}
 	//	}
 	//}
