@@ -4,7 +4,11 @@ cmake_minimum_required(VERSION 3.10)
 project(AoC_2019)
 
 # set the source aliases
-set(SOURCES source/fuel_counter_upper/FuelCounterUpper.cpp include/fuel_counter_upper/FuelCounterUpper.h)
+set(SOURCES
+        source/fuel_counter_upper/FuelCounterUpper.cpp include/fuel_counter_upper/FuelCounterUpper.h
+        source/intcode_computer/IntcodeComputer.cpp    include/intcode_computer/IntcodeComputer.h
+   )
+
 set(INPUT include/input/Day1.h)
 
 # add the executable
